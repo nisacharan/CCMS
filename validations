@@ -1,0 +1,35 @@
+
+Solved it with this if anyone else is trying to do the same thing:
+
+in app.js
+
+app.get('/usercheck', function(req, res) {
+    User.findOne({username: req.query.username}, function(err, user){
+        if(err) {
+          console.log(err);
+        }
+        var message;
+        if(user) {
+          console.log(user)
+            message = "user exists";
+            console.log(message)
+        } else {
+            message= "user doesn't exist";
+            console.log(message)
+        }
+        res.json({message: message});
+    });
+});
+
+In js
+
+ $('#usercheck').on('change', function() {
+    $.get('/usercheck?username='+$('#usernameValue').val().toLowerCase(), function(response) {  
+    $('#usernameResponseHidden').text(response.message)
+    if ($('#usernameResponseHidden').html() === "user exists"){
+        $('#usernameResponse').text('That username is taken. Please pick another')
+    }
+
+
+
+    /--------------------------------------------------------------------------------------------------

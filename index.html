@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title>My Chart.js Chart</title>
+</head>
+<body>
+<div class="container">
+  
+  <h3> Select the the type of chart </h3>
+  <select id="charts" name="charts">
+  <option value="bar"> bar </option>
+  <option value="pie"> pie </option>
+  <option value="radar"> radar </option>
+  <option value="polarArea"> polarArea </option>
+  </select>
+  <br><br>
+  <input id="chrt" type="submit" class="btn btn-info"  value="Apply Changes"> 
+  </div>
+
+  <div id=chrtContainer class="container" style="width: 500px; height: 400px;">
+    <canvas id="myChart"></canvas>
+  </div>
+
+  <script>
+    $('input[type="submit"][id="chrt"]').click(function(){
+      $('#myChart').remove();
+      $('#chrtContainer').append('<canvas id="myChart"></canvas>');
+      var canvas = document.getElementById('myChart');
+      var context = canvas.getContext('2d');
+      var chrt = $("select#charts").val();
+      console.log(chrt);
+      let massPopChart = new Chart(context, {
+        type:chrt, // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data:{
+          labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
+          datasets:
+          [{
+            label:'No.of Complaints',
+            data:[617594,  181045,  153060, 106519, 105162, 95072 ]
+          }]
+        }
+        
+      });
+  });
+  </script>
+</body>
+</html>

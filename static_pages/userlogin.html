@@ -1,0 +1,62 @@
+<!DOCTYPE>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/userlogin.css">
+  <!-- <script src="user_login_validation.js"></script> -->
+</head>
+
+
+<body>
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1>College Complaints Management System</h1>
+      <h2>(User Login)</h2>
+    </div>
+  </div>
+  <div class="container">
+
+
+    <div class="row">
+      <div class="Absolute-Center is-Responsive">
+        <div id="logo-container"></div>
+
+
+        <div class="col-md-50 col-md-50 col-md-offset">
+          <form action="/user_login_check" id="loginForm" method="post">
+            <div class="form-group input-group ">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input class="form-control input-lg" type="text" id="regName" name='regName' placeholder="Enter your Roll Number" required />
+            </div>
+            <div class="form-group input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input class="form-control input-lg" type="password" id="regPwd" name='regPwd' placeholder="Enter password"  required/>
+
+            </div>
+
+            <div class="form-group text-center">
+
+              <input type="submit" class="btn btn-info" align="center" value="     Log in     ">
+
+            </div>
+            <div class="form-group text-center">
+              <span>Not a member yet?</span>
+              <a href="/register">Sign up</a></br>
+              </br>
+              <a href="/adminlogin">I am Admin</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>

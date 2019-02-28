@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="complaintDashboard.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+
+<body>
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1>College Complaints Management System</h1>
+    </div>
+  </div>
+
+  <table class="w3-table w3-striped">
+    <tr>
+      <th>Roll Number</th>
+      <th>Department Name</th>
+      <th>Complaint Title</th>
+      <th>Complaint</th>
+      <th>Change status to</th>
+      <th>Current status</th>
+    </tr>
+
+    <% for (var i = 0; i < complaint.length; i++) { %>
+    <tr>
+      <td><%= complaint[i].roll %></td>
+      <td><%= complaint[i].dep %></td>
+      <td><%= complaint[i].title %></td>
+      <td><%= complaint[i].details %></td>
+      <td><%= complaint[i].status %></td>
+      <td><select id="status" name="status">
+        <option hidden>status</option>
+        <option>Initiated</option>
+        <option>Done</option>
+        <option>Processing</option>
+      </select></td>
+    </tr>    
+   <% } %>
+
+  </table>
+
+  <br>
+  
+  <div class="savingChanges" align="right">
+
+    <input type="submit" class="btn btn-info"  value="     Apply Changes     ">
+    <input type="submit" class="btn btn-info"  value="     View Report     ">
+    <input type="submit" class="btn btn-info"  value="     LogOut     ">
+
+
+  </div>
+
+
+</div>
+
+
+
+</body>
+</html>

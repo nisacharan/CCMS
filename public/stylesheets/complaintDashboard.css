@@ -1,0 +1,72 @@
+@media  (min-width: 768px) {
+    div.col-sm-7.five-three {
+    width: 60% !important;
+    }
+
+    div.col-sm-5.five-two {
+    width: 40% !important;
+    }
+}
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+<style>
+/*@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");*/
+body { margin: 1.875em; }
+.search {
+  position: relative;
+  color: #aaa;
+  font-size: 1em;
+}
+
+.search input {
+  width: 15.625em;
+  height: 2em;
+
+  background: #fcfcfc;
+  border: 0.0625em solid #aaa;
+  border-radius: 0.3125em;
+  box-shadow: 0 0 0.1875em #ccc, 0 0.625em 0.9375em #ebebeb inset;
+}
+
+.search input { text-indent: 2em;}
+.search .fa-search {
+  position: absolute;
+  top: 0.625em;
+
+  left: 0.625em;
+}
+
+</style>
+body {
+  margin: 0;
+ background-color: #eee;
+}
+
+.jumbotron {
+  padding: 2.5em;
+  /* fills out the jumbotron */
+  background-color: #111;
+}
+
+.container {
+  width: 100em;
+  /* specify a width */
+  margin: 0 auto;
+  /* centers the container */
+  padding: 0 0.600em;
+  /* adds some padding to the left and right*/
+}
+
+.jumbotron .container {
+  max-width: 100%;
+  /* allows the jumbotron to adjust on smaller widths */
+  /*background-color: #222;*/
+}
+
+.jumbotron h1, h3 {
+  text-align: center;
+  /* centers the heading */
+  color: #DDD;
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+}

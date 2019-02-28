@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="stylesheets/complaintDashboard.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+     <title> Hello User <%=title%> </title>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+
+<body>
+<p id="uname" hidden><%=title%></p>
+<p id="dep" hidden><%=dep%></p>
+  <div class="jumbotron">
+    <div class="container">
+      <h1>College Complaints Management System</h1>
+    </div>
+  </div>
+  
+  <table id="table" class="w3-table w3-striped">
+    <tr>
+      <th>Roll Number</th>
+      <th>Department Name</th>
+      <th>Complaint Title</th>
+      <th>Complaint</th>
+      <th>Current status</th>
+      <th>Change status to</th>
+    </tr>
+
+    <% for (var i = 0; i < complaint.length; i++) { %>
+    <tr>
+      <td><%= complaint[i].roll %></td>
+      <td><%= complaint[i].dep %></td>
+      <td><%= complaint[i].title %></td>
+      <td><%= complaint[i].details %></td>
+      <td><%= complaint[i].status %></td>
+      <td><select id="status" name="status">
+        <option <% if(complaint[i].status == "Initial") { %><%=selected%><%}%> value="Initial" >Initial </option >
+        <option <% if(complaint[i].status == "Progress") { %><%=selected%><%}%> value="Progress">Progress </option >
+        <option <% if(complaint[i].status == "Done"){%><%=selected%><%}%> value="Done">Done</option>
+      </select> </td>
+    </tr>    
+   <% } %>
+
+  </table>
+
+  <br>
+  
+  <div class="savingChanges" align="right">
+
+    <input id="sendServer" type="submit" class="btn btn-info"  value="Apply Changes">
+    <a href= "/chart" target="_blank"><input type="submit" class="btn btn-info"  value="     View Report     "></a>
+    <a href= "/logout"><input type="submit" class="btn btn-info"  value="     LogOut     "></a>
+
+  </div>
+
+
+<script>
+$('input[type="submit"][id="sendServer"]').click(function(){
+
+   var json = '[';
+   var otArr = [];
+   var row = 1;
+   var tbl2 = $('#table tr').each(function(i) {        
+      if(row > 1) {
+
+         x = $(this).children();
+         var itArr = [];
+         var col = 1;
+         x.each(function() {
+            if(col == 1) {
+               itArr.push('"roll":"' + $(this).text() + '"');
+            } if(col == 2) {
+               itArr.push('"dep":"' + $(this).text() + '"');
+            } if(col == 3) {
+               itArr.push('"title":"' + $(this).text() + '"');
+            } if(col == 6) {
+               x = $(this).children();
+               itArr.push('"status":"' + x.val()+ '"');
+            }
+            col = col +1;
+         });
+         console.log(itArr);
+         otArr.push('{' + itArr.join(',') + '}');
+      }
+      row = row + 1;
+   });
+   console.log("Final Result");
+   console.log(otArr);
+   json += otArr.join(",") + ']';
+   var ret = $.post("/update_status", {data:json}, function(data) {
+      console.log(data);
+      if(data = "success") {
+        console.log("success");
+        var uname = $("p#uname").html();
+        var dep = $("p#dep").html();
+        var url = "/admin_dashboard?uname="+uname+"&dep="+dep;
+        console.log(url);
+        $(location).attr('href',url);
+      }
+   });
+
+});
+</script>
+
+
+</div>
+
+
+
+</body>
+</html>

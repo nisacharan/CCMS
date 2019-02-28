@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="stylesheets/complaintDashboard.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+    <title> Hello User <%=title%> </title>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </head>
+
+<body>
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1>College Complaints Management System</h1>
+      <h3> Complaints raised by user: <%=title%>  </h3>
+    </div>
+  </div>
+<!-- Any user can  filter complaint by date,respective Department etc...  -->
+    <div class="container" align=center>
+      <h2> Filters </h2>
+                
+                <!-- <label style="font-size: 20px"> Select filters: </label> -->
+                <!-- &nbsp;&nbsp;&nbsp; &nbsp; -->
+                <label for="dep">Select Department:</label>
+                <select  id="dep" name="dep">
+                   <option value="ALL">ALL</option>
+                   <option value="CSE">CSE</option>
+                   <option value="CSIS">CSIS</option>
+                   <option value="CASE">CASE</option>
+                   <option value="BIOINFORMATICS">BIOINFORMATICS</option>
+                </select>      
+                &nbsp;&nbsp;&nbsp; &nbsp;
+                <label for="date">Select Date:</label>
+                <input type="text" id="date" name='date' placeholder="dd-mm-yyyy"/>
+                &nbsp;&nbsp;&nbsp; &nbsp;
+                <input type="submit" class="btn btn-info" id="filterbtn" align="center" value="Submit">
+                
+    </div>
+  <br>
+  <br>
+  <div class="container" align=center>
+  <h2> List of Complaints </h2>
+  </div>
+  <table class="w3-table w3-striped">
+    <tr>
+      <th>Created by</th>
+      <th>Department Name</th>
+      <th>Complaint Title</th>
+      <th>Complaint</th>
+      <th>Current status</th>
+    </tr>
+
+    <% for (var i = 0; i < complaint.length; i++) { %>
+    <tr>
+      <td><%= complaint[i].roll %></td>
+      <td><%= complaint[i].dep %></td>
+      <td><%= complaint[i].title %></td>
+      <td><%= complaint[i].details %></td>
+      <td><%= complaint[i].status %></td>
+    </tr>
+   <% } %>
+
+  </table>
+
+  <br>
+
+  <div class="savingChanges" align="right">
+  <input id="comp" type="submit" class="btn btn-info"  value="Raise a Complaint">
+    <a href= "/chart" target="_blank"><input type="submit" class="btn btn-info" value="View Report"></a>
+    <a href= "/logout"><input type="submit" class="btn btn-info"  value="LogOut"></a>
+
+  </div>
+
+
+</div>
+
+<script>
+$('input[type="submit"][id="comp"]').click(function(){
+  var url = "/comp_page?uname="+ "<%=title%>";  // roll number is passed to the title
+  $(location).attr('href',url);
+});
+$('input[type="submit"][id="filterbtn"]').click(function(){
+  var dep = $('#dep').val();
+  var date = $('#date').val();
+  console.log("dep");
+  console.log("date");
+  var url = "/user_dashboard_filter?dep="+dep+"&date="+date+"&uname="+"<%=title%>"; //number is passed to the title
+  $(location).attr('href',url);
+});
+</script>
+
+</body>
+</html>

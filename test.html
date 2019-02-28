@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Some Page</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+<table id="table" class="w3-table w3-striped">
+    <tr>
+      <th>Roll Number</th>
+      <th>Department Name</th>
+      <th>Complaint Title</th>
+      <th>Complaint</th>
+      <th>Current status</th>
+      <th>Change status to</th>
+    </tr>
+
+    
+    <tr>
+      <td>20172063</td>
+      <td>CSE</td>
+      <td>machg</td>
+      <td>Icheck asap</td>
+      <td>Initiated</td>
+      <td><select id="status" name="status">
+        <option selected value="Initial" >Initial </option >
+        <option  value="Progress">Progress </option >
+        <option  value="Done">Done</option>
+      </select> </td>
+    </tr>    
+   
+    <tr>
+      <td>20172013</td>
+      <td>CSE</td>
+      <td>cing</td>
+      <td>Canteen asap</td>
+      <td>Initiated</td>
+      <td><select id="status" name="status">
+        <option selected value="Initial" >Initial </option >
+        <option  value="Progress">Progress </option >
+        <option  value="Done">Done</option>
+      </select> </td>
+    </tr>    
+   
+    <tr>
+      <td>20172013</td>
+      <td>CSE</td>
+      <td>can</td>
+      <td>Caap</td>
+      <td>Initiated</td>
+      <td><select id="status" name="status">
+        <option selected value="Initial" >Initial </option >
+        <option  value="Progress">Progress </option >
+        <option  value="Done">Done</option>
+      </select> </td>
+    </tr>    
+   
+
+  </table>
+<input id="sendServer" name="sendServer" type="button" value="sendServer" />
+
+<script>
+$('input[type="button"][value="sendServer"]').click(function(){
+
+   var json = '[';
+   var otArr = [];
+   var row = 1;
+   var tbl2 = $('#table tr').each(function(i) {        
+      if(row > 1) {
+
+         x = $(this).children();
+         var itArr = [];
+         var col = 1;
+         x.each(function() {
+            if(col == 1) {
+               itArr.push('"roll":"' + $(this).text() + '"');
+            } if(col == 2) {
+               itArr.push('"dep":"' + $(this).text() + '"');
+            } if(col == 3) {
+               itArr.push('"title":"' + $(this).text() + '"');
+            } if(col == 6) {
+               x = $(this).children();
+               itArr.push('"status":"' + x.val()+ '"');
+            }
+            col = col +1;
+         });
+         console.log(itArr);
+         otArr.push('{' + itArr.join(',') + '}');
+      }
+      row = row + 1;
+   });
+   console.log("Final Result");
+   console.log(otArr);
+   json += otArr.join(",") + ']';
+   var ret = $.post("http://localhost:8000/update_status", {data:json}, function(data) {
+      console.log(data);
+      if(data = "success") {
+         $(location).attr('href',"http://localhost:8000/userlogin");
+      }
+   });
+   //$(location).attr('href',"http://localhost:8000/userlogin");
+//    $.ajax({
+//     url        : "http://localhost:8000/update_status",
+//     dataType   : 'json',
+//     contentType: 'application/json; charset=UTF-8', // This is the money shot
+//     data       : JSON.stringify(json),
+//     type       : 'POST'
+//     //complete   : callback // etc
+// });
+   //return json;
+   //alert(JSON.stringify(json));
+   //alert('data');
+});
+</script>
+
+
+</body>
+</html>

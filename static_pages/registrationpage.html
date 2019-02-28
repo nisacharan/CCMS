@@ -1,0 +1,102 @@
+<!DOCTYPE>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/registration.css">
+<script>
+
+
+
+$(function () {
+    $("#signMe").click(function () {
+
+        var password = $("#regPwd").val();
+        var confirmPassword = $("#regRePwd").val();
+        if($("#dep").val() == "dropDown"){
+          alert("Please select department");
+        }
+        if (password != confirmPassword) {
+            alert("Passwords do not match.");
+            return false;
+        }
+        return true;
+    });
+});
+</script>
+</head>
+
+
+<body>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1>College Complaints Management System</h1>
+      <h2>(Registration Page)</h2>
+    </div>
+    <div class="container">
+
+
+      <div class="row">
+        <div class="Absolute-Center is-Responsive">
+          <div id="logo-container"></div>
+
+
+          <div class="col-md-40 col-md-50 col-md-offset">
+            <form action="/register_check" id="loginForm" method="post">
+              <div class="form-group">
+                <select class="form-control input-lg " id="dep" name="dep">
+         <option hidden value="dropDown">Select department</option>
+          <option>CSE</option>
+         <option>CSIS</option>
+         <option>CASE</option>
+         <option>BIOINFORMATICS</option>
+       </select>
+                <br>
+
+                <div class="form-group input-group ">
+
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input class="form-control input-lg" type="number"  id="regId" name='regId' placeholder="Enter Roll Number" required />
+                </div>
+
+                <div class="form-group input-group ">
+
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input class="form-control input-lg" type="text"  id="regName" name='regName' placeholder="Enter your name" required />
+                </div>
+
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input class="form-control input-lg" type="password" id="regPwd" name='regPwd' placeholder="Enter password" required />
+                </div>
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input class="form-control input-lg" type="password" id="regRePwd" name='regRePwd' onkeyup="validatePassword(); return false;"  placeholder="Re-enter password" required />
+                </div>
+
+                <div class="checkbox">
+                  <h4>
+                  <!-- <label><input type="checkbox" value="isAdmin" name='isAdmin'> &nbsp; &nbsp;Are you admin ?</label></h4> -->
+                  <label class="switch"> <input type="checkbox" value="isAdmin" name='isAdmin'>  <span class="slider round"></span>&nbsp; &nbsp;Are you admin ?</label>
+                </div>
+                <br>
+                <div class="form-group text-center">
+
+                  <input type="submit" id="signMe" class="btn btn-info" align="center" value=" Sign me up !   ">
+
+                </div>
+
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>

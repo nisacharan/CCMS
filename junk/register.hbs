@@ -1,0 +1,111 @@
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1>Collage Complaints Management System</h1>
+    </div>
+    <div class="container">
+
+
+      <div class="row">
+        <div class="Absolute-Center is-Responsive">
+          <div id="logo-container"></div>
+
+
+          <div class="col-md-40 col-md-50 col-md-offset">
+            
+        <form action="/register/check" id="loginForm" method="post">
+              <div class="form-group">
+                <select class="form-control input-lg " name="dep">
+         <option hidden>Select Department</option>
+         <option>CSE</option>
+         <option>CSIS</option>
+         <option>CASE</option>
+         <option>BIOINFORMATICS</option>
+       </select>
+                <br>
+
+                <div class="form-group input-group ">
+
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input class="form-control input-lg" type="text" name='username' placeholder="Enter Email" />
+                </div>
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input class="form-control input-lg" type="password" name='password' placeholder="Enter password" />
+                </div>
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input class="form-control input-lg" type="password" name='password' placeholder="re-enter password" />
+                </div>
+
+
+                <div class="form-group text-center">
+
+                  <input type="submit" class="btn btn-info" align="center" value=" Sign me up !   ">
+
+                </div>
+
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1>College Complaints Management System</h1>
+      <h2>(Registration Page)</h2>
+    </div>
+    <div class="container">
+
+
+      <div class="row">
+        <div class="Absolute-Center is-Responsive">
+          <div id="logo-container"></div>
+
+
+          <div class="col-md-40 col-md-50 col-md-offset">
+          <form action="/register/check" id="loginForm" method="post">
+          
+              <div class="form-group">
+                <select class="form-control input-lg " id="dep" >
+         <option hidden value="dropDown">Select department</option>
+          <option>CSE</option>
+         <option>CSIS</option>
+         <option>CASE</option>
+         <option>BIOINFORMATICS</option>
+       </select>
+                <br>
+
+                <div class="form-group input-group ">
+
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input class="form-control input-lg" type="text"  id="regId" name='username' placeholder="Enter Email" required />
+                </div>
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input class="form-control input-lg" type="password" id="regPwd" name='password' placeholder="Enter password" required />
+                </div>
+                <div class="form-group input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input class="form-control input-lg" type="password" id="regRePwd"  onkeyup="validatePassword(); return false;"name='password' placeholder="Re-enter password" required />
+                </div>
+
+
+                <div class="form-group text-center">
+
+                  <input type="submit" id="signMe" class="btn btn-info" align="center" value=" Sign me up !   ">
+
+                </div>
+
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
